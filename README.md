@@ -35,16 +35,16 @@ To run this project locally, ensure you have the following installed:
    ```bash
    git clone [https://github.com/nyarachun/2048-game.git](https://github.com/nyarachun/2048-game.git)   
       ```
-   **Navigate to the project directory:**
+2. **Navigate to the project directory:**
   ```bash
    cd 2048-game
    ```
-**Install dependencies:**
+3. **Install dependencies:**
 
 ```bash
    npm install
    ```
-**Start the local development server:**
+4. **Start the local development server:**
 
 ```bash
    npm start
