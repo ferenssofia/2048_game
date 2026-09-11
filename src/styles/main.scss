@@ -1,10 +1,23 @@
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 body {
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #fbf8ef;
+  /* М'який градієнтний фон замість однотонного */
+  background: linear-gradient(135deg, #fbf8ef 0%, #eae2d6 100%);
   font-family: sans-serif;
   font-size: 24px;
   font-weight: 900;
@@ -20,6 +33,12 @@ body {
   text-align: center;
   vertical-align: center;
   user-select: none;
+  transition: background-color 0.15s ease;
+
+  /* Клас для анімації злиття */
+  &--pop {
+    animation: pop 0.15s ease-in-out;
+  }
 
   &--2 {
     background: #eee4da;

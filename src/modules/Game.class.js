@@ -2,56 +2,45 @@
 
 /**
  * This class represents the game.
- * Now it has a basic structure, that is needed for testing.
- * Feel free to add more props and methods if needed.
  */
 class Game {
   /**
    * Creates a new game instance.
    *
    * @param {number[][]} initialState
-   * The initial state of the board.
-   * @default
-   * [[0, 0, 0, 0],
-   *  [0, 0, 0, 0],
-   *  [0, 0, 0, 0],
-   *  [0, 0, 0, 0]]
-   *
-   * If passed, the board will be initialized with the provided
-   * initial state.
    */
   constructor(initialState = null) {
-    // eslint-disable-next-line no-console
-    this.initialState = initialState
-      ? initialState.map((row) => [...row])
-      : Array.from({ length: 4 }, () => Array(4).fill(0));
+    if (initialState) {
+      this.board = initialState.map((row) => [...row]);
+      this.status = 'playing';
+    } else {
+      this.board = Array.from({ length: 4 }, () => Array(4).fill(0));
+      this.status = 'idle';
+    }
 
-    this.board = this.initialState.map((row) => [...row]);
     this.score = 0;
-    this.status = 'idle';
   }
 
   moveLeft() {
-    this.move(false); // Не розгортати рядок
+    this.move(false);
   }
 
   moveRight() {
-    this.move(true); // Розгортати рядок для руху праворуч
+    this.move(true);
   }
 
   moveUp() {
     this.transpose();
-    this.move(false); // Рух вгору (після транспонування це рух ліворуч)
+    this.move(false);
     this.transpose();
   }
 
   moveDown() {
     this.transpose();
-    this.move(true); // Рух вниз (після транспонування це рух праворуч)
+    this.move(true);
     this.transpose();
   }
 
-  // Оновлений метод move, який приймає прапорець reversed
   move(reversed = false) {
     if (this.status !== 'playing') {
       return;
@@ -80,6 +69,7 @@ class Game {
       this.updateStatus();
     }
   }
+
   /**
    * @returns {number}
    */
@@ -98,11 +88,6 @@ class Game {
    * Returns the current game status.
    *
    * @returns {string} One of: 'idle', 'playing', 'win', 'lose'
-   *
-   * `idle` - the game has not started yet (the initial state);
-   * `playing` - the game is in progress;
-   * `win` - the game is won;
-   * `lose` - the game is lost
    */
   getStatus() {
     return this.status;
@@ -127,11 +112,8 @@ class Game {
     this.start();
   }
 
-  // Add your own methods here
-
   mergeRow(row) {
     const filtered = row.filter((value) => value !== 0);
-
     const result = [];
 
     for (let i = 0; i < filtered.length; i++) {
@@ -187,7 +169,6 @@ class Game {
     for (const row of this.board) {
       if (row.includes(2048)) {
         this.status = 'win';
-
         return;
       }
     }

@@ -28,24 +28,28 @@ button.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (game.getStatus() === 'idle') {
+  if (game.getStatus() !== 'playing') {
     return;
   }
 
   switch (e.key) {
     case 'ArrowLeft':
+      e.preventDefault();
       game.moveLeft();
       break;
 
     case 'ArrowRight':
+      e.preventDefault();
       game.moveRight();
       break;
 
     case 'ArrowUp':
+      e.preventDefault();
       game.moveUp();
       break;
 
     case 'ArrowDown':
+      e.preventDefault();
       game.moveDown();
       break;
 
@@ -65,6 +69,7 @@ function render() {
     const row = Math.floor(index / 4);
     const col = index % 4;
     const value = board[row][col];
+    const previousValue = cell.textContent ? Number(cell.textContent) : 0;
 
     cell.className = 'field-cell';
 
@@ -73,6 +78,11 @@ function render() {
     } else {
       cell.textContent = value;
       cell.classList.add(`field-cell--${value}`);
+
+      // Додаємо клас анімації, якщо значення плитки зросло (відбулося об'єднання)
+      if (previousValue > 0 && value > previousValue) {
+        cell.classList.add('field-cell--pop');
+      }
     }
   });
 
