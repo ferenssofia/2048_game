@@ -32,7 +32,7 @@ To run this project locally, ensure you have the following installed:
 ## Installation and Setup
 
 1. **Clone the repository:**
-   ```bash
+  ```bash
    git clone [https://github.com/nyarachun/2048-game.git](https://github.com/nyarachun/2048-game.git)   
       ```
 2. **Navigate to the project directory:**
