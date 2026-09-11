@@ -35,7 +35,7 @@ To run this project locally, ensure you have the following installed:
 
   ```bash
    git clone [https://github.com/ferenssofia/2048-game.git] 
-    ```   
+   ```   
 2. **Navigate to the project directory:**
 
   ```bash
