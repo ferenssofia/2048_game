@@ -79,7 +79,6 @@ function render() {
       cell.textContent = value;
       cell.classList.add(`field-cell--${value}`);
 
-      // Додаємо клас анімації, якщо значення плитки зросло (відбулося об'єднання)
       if (previousValue > 0 && value > previousValue) {
         cell.classList.add('field-cell--pop');
       }

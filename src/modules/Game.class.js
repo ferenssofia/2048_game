@@ -169,6 +169,7 @@ class Game {
     for (const row of this.board) {
       if (row.includes(2048)) {
         this.status = 'win';
+
         return;
       }
     }
